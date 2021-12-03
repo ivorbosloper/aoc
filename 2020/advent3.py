@@ -14,7 +14,7 @@ def g(slope, raster):
 
 def f1(input):
     slope = 3, 1
-    print(g(slope, input))
+    return g(slope, input)
 
 
 def f2(input):
@@ -23,4 +23,4 @@ def f2(input):
     cnt = 1
     for i in counts:
         cnt *= i
-    print(cnt)
+    return cnt

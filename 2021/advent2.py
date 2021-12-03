@@ -13,4 +13,4 @@ def f1(data):
         direction, nr = i.strip().split(" ")
         move = DIRS[direction]
         state = state[0] + move[0] * int(nr), state[1] + move[1] * int(nr)
-    print(state[0] * state[1])
+    return state[0] * state[1]

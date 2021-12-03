@@ -12,7 +12,7 @@ def f1(input):
         row, column, seat = pseat(line)
         if seat > m:
             m = seat
-    print(m)
+    return m
 
 
 def f2(input):
