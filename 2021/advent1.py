@@ -9,7 +9,7 @@ def f1(lst):
         if i > prev:
             cnt += 1
         prev = i
-    print(cnt)
+    return cnt
 
 
 def f2(lst):
@@ -21,4 +21,4 @@ def f2(lst):
             if sum(new) > sum(prev):
                 cnt += 1
         prev = new
-    print(cnt)
+    return cnt

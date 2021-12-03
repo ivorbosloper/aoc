@@ -11,6 +11,11 @@ def apply_parse(input, func):
     return [func(s.strip()) for s in StringIO(input)]
 
 
+def print_not_none(val):
+    if val is not None:
+        print(val)
+
+
 if __name__ == '__main__':
     if len(sys.argv) < 2:
         print(USAGE)
@@ -33,5 +38,5 @@ if __name__ == '__main__':
         if hasattr(m, func_name):
             func = getattr(m, func_name)
             print(f"- {func_name:4}-")
-            sys.stdout.write('test> '); sys.stdout.flush(); func(test_data)
-            sys.stdout.write('prod> '); sys.stdout.flush(); func(prod_data)
+            sys.stdout.write('test> '); sys.stdout.flush(); print_not_none(func(test_data))
+            sys.stdout.write('prod> '); sys.stdout.flush(); print_not_none(func(prod_data))

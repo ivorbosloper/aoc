@@ -12,7 +12,7 @@ def parse(input):
 
 
 def print_f(input, func):
-    print(sum(len(func(group)) for group in input))
+    return sum(len(func(group)) for group in input)
 
 
 def f1(input):
