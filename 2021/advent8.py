@@ -54,3 +54,17 @@ def f2(input):
         nr = int("".join([sorted_string_to_number[str_sort(s)] for s in after.split(" ")]))
         count += nr
     return count
+
+
+def f2(input):
+    count = 0
+    for line in input:
+        before, after = line.split(" | ")
+        # freqs = [8, 6, 8, 7, 4, 9, 7]  # freq(a) == 8, freq(b) == 6
+        # [e, b, None, None, None, None, f]
+
+
+        # [1, 7, 4, len(5+5+5), len(6+6+6), 8]
+        segments = list(sorted([str_sort(s) for s in before.split(" ")], key=len))
+        sets = [set(s) for s in segments]
+        numbers = [1, 7, 4, None, None, None, None, None, None, 8]
