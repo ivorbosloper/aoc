@@ -1,4 +1,4 @@
-VARIANTS = ((0, 1), (0, -1), (1, 0), (-1, 0))
+from util import HV_VARIANTS
 
 
 def find_highest_points(input):
@@ -13,7 +13,7 @@ def find_highest_points(input):
     for y in range(h):
         for x in range(w):
             e = input[y][x]
-            if all(test_higher(y+dy, x+dx) for dx, dy in VARIANTS):
+            if all(test_higher(y+dy, x+dx) for dx, dy in HV_VARIANTS):
                 highest.append((y, x))
     return highest
 
@@ -36,7 +36,7 @@ def f2(input):
                 continue
             size += 1
             handled[y][x] = True
-            for dy, dx in VARIANTS:
+            for dy, dx in HV_VARIANTS:
                 ty, tx = y+dy, x+dx
                 if 0 <= ty < h and 0 <= tx < w \
                         and not handled[ty][tx] and "9" > input[ty][tx] > input[y][x]:
