@@ -1,3 +1,5 @@
+from itertools import chain, combinations
+
 def f1(input):
     mask_or = mask_and = None
     mem = {}
@@ -13,38 +15,26 @@ def f1(input):
     return sum(mem.values())
 
 
-class TrieNode:
-    def __init__(self, mask, value):
-        self.mask = mask
-        self.value = value
-        self.left = self.right = None  # TrieNode
-
-    def merge(self, mask, value):
-        pass
-
-    def sum(self):
-        factor = 2 ** self.mask.count("X")
-        return factor * self.value
-
-    @property
-    def depth(self):
-        return len(self.mask) + (0 if self.left is None else self.left.depth)
+def all_combinations(lst):
+    return chain([[]], *(list(combinations(lst, i + 1)) for i in range(len(lst))))
 
 
 def f2(input):
     mask = "0" * 36
-    writes = None
+    mem = {}
 
     for line in input:
         cmd, arg = line.split(" = ")
         if cmd == 'mask':
-            mask = mask
+            mask = arg
         else:
+            value = int(arg)
             address = f"{int(cmd[4:-1]):036b}"
             w_address = "".join(m if m in '1X' else a for a, m in zip(address, mask))
-            if writes is None:
-                writes = TrieNode(w_address, int(arg))
-            else:
-                writes.merge(w_address, int(arg))
-    return writes.sum()
+
+            base_address = int(w_address.replace('X', '0'), 2)
+            floating = [2**(35-i) for i, c in enumerate(w_address) if c == 'X']
+            for cmb in all_combinations(floating):
+                mem[base_address + sum(cmb)] = value
+    return sum(mem.values())
 
