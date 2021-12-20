@@ -8925,10 +8925,16 @@ a13 = ["""\
 37,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,41,x,x,x,x,x,x,x,x,x,601,x,x,x,x,x,x,x,x,x,x,x,19,x,x,x,x,17,x,x,x,x,x,23,x,x,x,x,x,29,x,443,x,x,x,x,x,x,x,x,x,x,x,x,13"""]
 
 a14 = ["""\
-mask = XXXXXXXXXXXXXXXXXXXXXXXXXXXXX1XXXX0X
-mem[8] = 11
-mem[7] = 101
-mem[8] = 0""", """\
+mask = 000000000000000000000000000000X1001X
+mem[42] = 100
+mask = 00000000000000000000000000000000X0XX
+mem[26] = 1""",
+#       """\
+# mask = XXXXXXXXXXXXXXXXXXXXXXXXXXXXX1XXXX0X
+# mem[8] = 11
+# mem[7] = 101
+# mem[8] = 0""",
+"""\
 mask = 10011X0100001X1110X0X001000X10X01101
 mem[24654] = 24859
 mem[35770] = 6484
