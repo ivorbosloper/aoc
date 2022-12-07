@@ -20,6 +20,5 @@ def f1(input):
 def f1(input):
     sizes = [sum(i) for i in input]
     sizes.sort()
-    print(sizes)
     print(sum(sizes[-3:]))
 
