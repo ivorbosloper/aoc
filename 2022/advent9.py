@@ -41,7 +41,7 @@ def f1(moves):
             visited.add(pt)
     print(len(visited))
 
-def f1(moves):
+def f2(moves):
     ps = [(0, 0) for _ in range(10)]
     visited = set()
 
