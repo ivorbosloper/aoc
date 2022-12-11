@@ -49,4 +49,4 @@ def f2(ops):
                 running = int(op[1])
 
     print("Board", len(pixels))
-    print("\n".join(["".join(pixels[i*40 : (i+1)*40]) for i in range(6)]))
+    print("\n".join(["".join(pixels[i : i+40]) for i in range(0, 240, 40)]))
