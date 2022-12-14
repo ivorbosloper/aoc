@@ -27,7 +27,6 @@ class Board(BaseBoard):
         while len(queue):
             x, y = queue.popleft()
             so_far = dist[y][x]
-            #print(x, y, so_far)
             for dx, dy in HV_VARIANTS:
                 nx, ny = x+dx, y+dy
                 if 0 <= nx < self.width and 0 <= ny < self.height \
@@ -44,7 +43,6 @@ class Board(BaseBoard):
         while len(queue):
             x, y = queue.popleft()
             so_far = dist[y][x]
-            #print(x, y, so_far)
             for dx, dy in HV_VARIANTS:
                 nx, ny = x+dx, y+dy
                 if 0 <= nx < self.width and 0 <= ny < self.height \
