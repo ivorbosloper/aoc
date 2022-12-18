@@ -79,7 +79,7 @@ def f2(graph):
 
         for s, points in states.items():
             location1, location2, openstate = s
-            if points < max_points - 100: # estimated guess, come up with a trick to minimize states
+            if points < max_points - 100: # estimated guess, come up with a trick to minimize loser-states
                 continue
             # if openstate is a subset of other options, skip it. We could have taken a faster path
             if any(openstate | os == os and openstate != os for os in open_states_per_location[location1, location2]):
