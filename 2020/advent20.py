@@ -38,7 +38,7 @@ def parse(input):
     return [Tile(i.split('\n')) for i in input.split("\n\n")]
 
 def vtostr(variant):
-    print([f"{i:010b}" for i in to_try[index - size][pointer[index - size]][VARIANT]])
+    print(variant[0])
 
 def f1(tiles):
     size = int(math.sqrt(len(tiles)))
