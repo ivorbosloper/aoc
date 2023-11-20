@@ -1,3 +1,5 @@
+# fmt: off
+
 
 a1 = ["""\
 1721
@@ -12587,3 +12589,73 @@ vgz lnjzfq zhqjs zzjpb hzslpf hnqpzm gszhdb dglm bkvkccp nctqgz qtkmgk hsgmkncv 
 kvk vblq mxps rzrp nljmg vjk spdv qdxtm thqfl zgmdk ngmb gzjpxg cdqvp nhsqm mfqgx zqfkjb sxrzdfb vbfhhs tzvlh mcqgt rkxjxfs lrxrsjrp nxvbhm tfhjp hcp sjlgfj nzbld mllvt gxznsd tvr lpbhxnr cdtk mtsnlbc lbm cqkccs jxp xz ncxz nkhgf plsd kmvgpg tgmzqjz mxzhrd lnxqdncm mjnqzx plcl xvtrfz krfx bnn zd zpjdx qxfh rbpg scxzmgx fjpr pbdvt fksdc szrp zlzk hhpjqfk vjrr dfjbgjq shnvtq rffqhl nltvv zhqjs zbdlzp fvpz hdbqg bzkq htgcs kvtd vvcqgp jxtbpl lvdhg (contains wheat, peanuts)
 cvrqbgr pksjkpz dxlfpkb fjcfj rvm xvtrfz cdqvp nhbdx kmvgpg lrxrsjrp rffqhl pqg xbvrgqp lnjzfq zjv jkqbsc frz sxrzdfb xpnmk gzjpxg mfqgx tgmzqjz lgs lnxqdncm zhqjs znv thqfl zbvhht fjpr szrp tphgnfx cjx hfjft tkjs qjrt hvdv jxp nltvv fmv vghn rbpg zgmdk ccdphz (contains soy, fish, dairy)
 lrxrsjrp rbglp rkxjxfs krfx tvr xnxgc xvtrfz mfqgx thbfsz kvtd bflsbb rbpg prv sjlgfj plcl htgcs nxvbhm rbjx lbjfg qvmfxpr zhqjs gfhmp tfhjp dglm klbzzc xrkkt gxznsd xz lvdhg thqfl fmnsts rffqhl nkhgf spdv tgmzqjz ngmb jhgs cct lgs sdrtq ttfdmjnv nctqgz cvrqbgr fspmjgc mtsnlbc lpqc hzslpf nhsqm mzxdl nfgzk tkjs hzxm qgjqdn (contains sesame, eggs)"""]
+
+a22 = ["""\
+Player 1:
+9
+2
+6
+3
+1
+
+Player 2:
+5
+8
+4
+7
+10""", """\
+Player 1:
+7
+1
+9
+10
+12
+4
+38
+22
+18
+3
+27
+31
+43
+33
+47
+42
+21
+24
+50
+39
+8
+6
+16
+46
+11
+
+Player 2:
+49
+41
+40
+35
+44
+29
+30
+19
+14
+2
+34
+17
+25
+5
+15
+32
+20
+48
+45
+26
+37
+28
+36
+23
+13"""]
+
+a23 = ["389125467", "916438275"]
