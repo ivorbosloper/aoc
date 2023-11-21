@@ -20,6 +20,7 @@ def run(mem):
 
 def f1(input):
     mem = [int(s) for s in input[0].split(",")]
+    run(mem)
 
 
 def f2(input):
