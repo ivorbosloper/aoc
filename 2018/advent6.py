@@ -73,6 +73,27 @@ class Board:
                     result[node.index] += 1
         return result
 
+    def breadth_first_below(self, target: int):
+        counter = 0
+        handled = set()
+        center = (self.width // 2, self.height // 2)
+        q = deque()
+        q.append(center)
+        while len(q):
+            point = q.popleft()
+            if point in handled:
+                continue
+            handled.add(point)
+            x, y = point
+            dist = sum(abs(x - x2) + abs(y - y2) for x2, y2 in self.items)
+            if dist < target:
+                counter += 1
+                for dx, dy in HV_VARIANTS:
+                    np = x + dx, y + dy
+                    if np not in handled:
+                        q.append(np)
+        return counter
+
 
 def f1(input):
     board = Board(input)
@@ -83,3 +104,9 @@ def f1(input):
         key=operator.itemgetter(1),
     )
     return chr(ord("A") + index), area
+
+
+def f2(input):
+    board = Board(input)
+    target = 32 if len(input) < 20 else 10000
+    return board.breadth_first_below(target)
