@@ -14,7 +14,10 @@ def apply_parse(input, func):
 
 def print_not_none(val):
     if val is not None:
-        print(val)
+        out = str(val)
+        if "\n" in out:
+            print()
+        print(out)
 
 
 if __name__ == "__main__":

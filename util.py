@@ -1,10 +1,15 @@
-HV_VARIANTS = ((1, 0), (0, 1),  (-1, 0), (0, -1))
+from typing import Generic, TypeVar
+
+HV_VARIANTS = ((1, 0), (0, 1), (-1, 0), (0, -1))
 HZD_VARIANTS = ((1, 0), (1, 1), (0, 1), (-1, 1), (-1, 0), (-1, -1), (0, -1), (1, -1))
 
 
-class BaseBoard:
+T = TypeVar("T")
+
+
+class BaseBoard(Generic[T]):
     def __init__(self, input, func=int):
-        self.board = [[func(i) for i in row] for row in input]
+        self.board: list[list[T]] = [[func(i) for i in row] for row in input]
         self.height = len(self.board)
         self.width = len(self.board[0])
 
