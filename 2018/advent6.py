@@ -69,6 +69,7 @@ class Board:
         result = [0] * len(self.items)
         for row in self.board:
             for node in row:
+                assert node is not None
                 if node.index is not None:
                     result[node.index] += 1
         return result
