@@ -4,7 +4,7 @@ from collections import defaultdict
 from datetime import date, timedelta
 
 try:
-    from itertools import batched
+    from itertools import batched  # type: ignore
 except ImportError:
     from itertools import islice
 
