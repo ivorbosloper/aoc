@@ -23,11 +23,11 @@ def print_not_none(val):
 if __name__ == "__main__":
     try:
         if len(sys.argv) < 3:
-            m = re.match(r".*/(\d+)/advent(\d+)\.py", sys.argv[1])
-            year, day = int(m.group(1)), int(m.group(2))
+            m = re.match(r".*/(\w+)/advent(\d+)\.py", sys.argv[1])
+            assert m
+            year, day = m.group(1), int(m.group(2))
         else:
-            year, day = int(sys.argv[1]), int(sys.argv[2])
-        assert 2015 <= year <= 2025
+            year, day = sys.argv[1], int(sys.argv[2])
         assert 0 < day < 30
     except:
         print(USAGE)
