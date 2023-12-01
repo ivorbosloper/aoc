@@ -2,7 +2,7 @@ import re
 
 
 def parse_line(line):
-    m = re.match("#(\d+) @ (\d+),(\d+): (\d+)x(\d+)", line)
+    m = re.match(r"#(\d+) @ (\d+),(\d+): (\d+)x(\d+)", line)
     assert m
     return tuple(map(int, m.groups()))
 
