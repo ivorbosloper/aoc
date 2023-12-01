@@ -3882,3 +3882,6 @@ a9 = [
     "30 players; last marble is worth 5807 points: high score is 37305",
     "411 players; last marble is worth 71170 points"
 ]
+
+a10 = ["18", "1723"]
+# a10 = ["1723", "1723"]
