@@ -8,7 +8,7 @@ T = TypeVar("T")
 
 
 class BaseBoard(Generic[T]):
-    def __init__(self, input, func=int):
+    def __init__(self, input, func=lambda x: x):
         self.board: list[list[T]] = [[func(i) for i in row] for row in input]
         self.height = len(self.board)
         self.width = len(self.board[0])
@@ -24,3 +24,10 @@ class BaseBoard(Generic[T]):
 
     def __ne__(self, other):
         return not self.__eq__(other)
+
+    def get(self, x, y, default=None):
+        return (
+            self.board[y][x]
+            if 0 <= x < self.width and 0 <= y < self.height
+            else default
+        )
