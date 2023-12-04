@@ -8,6 +8,7 @@ def nrs(s):
 
 def parse_line(line):
     m = re.match(r"Card\s+(\d+):\s+(.*)\s+\|\s+(.*)", line)
+    assert m
     card_nr = int(m.group(1))
     return card_nr, nrs(m.group(2)), nrs(m.group(3))
 
@@ -26,7 +27,6 @@ def f2(input):
     cards = {card_nr: 1 for card_nr, _a, _b in input}
     for card_nr, winning, my_nrs in input:
         overlaps = len(set(winning).intersection(set(my_nrs)))
-        factor = cards[card_nr]
         for i in range(overlaps):
-            cards[card_nr + 1 + i] += factor
+            cards[card_nr + 1 + i] += cards[card_nr]
     return sum(cards.values())
