@@ -35,7 +35,6 @@ class Graph:
                 trange, srange, length = map(int, line.split(" "))
                 lst.append((srange, trange, length))
             lst.sort()
-            # print(lst)
 
     def map(self, nr):
         for conlist in self.connections:
