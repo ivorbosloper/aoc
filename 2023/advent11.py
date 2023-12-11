@@ -30,8 +30,8 @@ class Board(BaseBoard):
 
         return (
             base_dist
-            + sum(factor for y in range(y1, y2) if y in self.ys)
-            + sum(factor for x in range(x1, x2) if x in self.xs)
+            + factor * len(self.ys.intersection(range(y1, y2)))
+            + factor * len(self.xs.intersection(range(x1, x2)))
         )
 
     def all_distances(self):
