@@ -4,6 +4,7 @@
 
 typedef enum {false, true} bool;
 #define MAXLEN 1000
+#define LOG (1ULL<<33) - 1
 
 char nodes[MAXLEN][4];
 int graph [MAXLEN][2];
@@ -42,7 +43,6 @@ int main(int argc, char **argv) {
     for (int i=0; i<nr_nodes; i++) {
         if (isa[i]) current[current_len++] = i;
     }
-    printf("current_len %d\n", current_len);
 
     unsigned long long steps = 0;
     int line_pointer = 0;
@@ -57,7 +57,11 @@ int main(int argc, char **argv) {
             all_z = all_z && isz[current[i]];
             current[i] = graph[current[i]][lr];
         }
+        if ((steps & LOG) == LOG) {
+            fprintf(stderr, ".");
+            // printf("\nsteps %llu %llu\n", steps, steps & LOG);
+        }
         // printf("(%llu) \n", steps);
     }
-    printf("steps %llu\n", --steps);
+    printf("\nsteps %llu\n", --steps);
 }
