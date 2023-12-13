@@ -48,12 +48,13 @@ def calc2(board):
     current = calc(board)
     skip = current // 100, current % 100
     result = 0
-    b = board.board
+    b, vb = board.board, board.vboard
     for y in range(board.height):
         for x in range(board.width):
-            b[y][x] = "#" if b[y][x] == "." else "."
+            saved = b[y][x]
+            vb[x][y] = b[y][x] = "#" if saved == "." else "."
             m = calc(board, skip)
-            b[y][x] = "#" if b[y][x] == "." else "."
+            vb[x][y] = b[y][x] = saved
             if m != 0:
                 assert result in (0, m)
                 result = m
@@ -61,5 +62,4 @@ def calc2(board):
 
 
 def f2(boards):
-    # 32192 correct
     return sum(calc2(board) for board in boards)
