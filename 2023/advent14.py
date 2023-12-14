@@ -15,7 +15,7 @@ class Board(BaseBoard):
         if direction[0]:  # move over x
             lv1 = swap_range(self.width, -direction[0])
             lv2 = 0, self.height
-        else:
+        else:  # move over y
             lv1 = swap_range(self.height, -direction[1])
             lv2 = 0, self.width
         for l1 in range(*lv1):
@@ -57,9 +57,6 @@ def f2(input):
     states = {}
     counter = 0
 
-    # print()
-    # print(board)
-
     while True:
         key = str(board)
         if key in states:
@@ -75,5 +72,4 @@ def f2(input):
     for _ in range(steps_left):
         for direction in HV_VARIANTS:
             board.tilt(direction)
-    # too high 90201
     return board.weight()
