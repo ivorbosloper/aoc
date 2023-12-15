@@ -17,6 +17,7 @@ def f1(input):
 
 
 def f2(input):
+    # since python 3.7, python dict is insert-order preserving
     boxes = [{} for _ in range(256)]
     for s in input:
         assert (m := re.match(r"(\w+)([=-])(\d*)", s))
@@ -28,12 +29,6 @@ def f2(input):
             box[label] = int(focal)
         else:
             raise
-        # print()
-        # print(f"After '{s}':")
-        # for i in range(256):
-        #     if boxes[i]:
-        #         a = " ".join(f"[{k} {v}]" for k, v in boxes[i].items())
-        #         print(f"Box {i}: {a}")
 
     return sum(
         (1 + i) * (k + 1) * v
