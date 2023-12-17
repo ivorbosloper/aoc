@@ -43,13 +43,12 @@ class Board(BaseBoard):
         )
 
     def edge_entries(self):
-        # E, S, W, N
         for y in range(self.height):
-            yield 0, y, 0
-            yield self.width - 1, y, 2
+            yield 0, y, E
+            yield self.width - 1, y, W
         for x in range(self.width):
-            yield x, 0, 1
-            yield x, self.height - 1, 3
+            yield x, 0, S
+            yield x, self.height - 1, N
 
 
 def f1(input):
