@@ -18,13 +18,11 @@ class Board(BaseBoard[int]):
 
     def allowed_next_steps(self, current_direction, steps):
         for d in range(4):
-            if steps == 0:
-                yield d  # allow all directions from start
-                continue
-            if d == (current_direction + 2) % 4:
-                continue  # no reverse
-            if steps == 3 and current_direction == d:
-                continue  # not more then 3 steps
+            if steps > 0:  # only check after start
+                if d == (current_direction + 2) % 4:
+                    continue  # no reverse
+                if steps == 3 and current_direction == d:
+                    continue  # not more then 3 steps
             yield d
 
     def travel(self):
@@ -71,15 +69,13 @@ def f1(input):
 class Board2(Board):
     def allowed_next_steps(self, current_direction, steps):
         for d in range(4):
-            if steps == 0:
-                yield d  # allow all directions from start
-                continue
-            if d == (current_direction + 2) % 4:
-                continue  # no reverse
-            if steps < 4 and current_direction != d:
-                continue  # not less then 4 steps in same direction
-            if steps >= 10 and current_direction == d:
-                continue  # not more then 4 steps in same direction
+            if steps > 0:  # only check after start
+                if d == (current_direction + 2) % 4:
+                    continue  # no reverse
+                if steps < 4 and current_direction != d:
+                    continue  # not less then 4 steps in same direction
+                if steps >= 10 and current_direction == d:
+                    continue  # not more then 4 steps in same direction
             yield d
 
 
