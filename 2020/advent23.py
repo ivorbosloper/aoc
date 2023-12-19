@@ -1,39 +1,32 @@
+from collections import deque
+from typing import Deque
+
+
 def f1(input):
-    length = len(input[0])
-    current = 0
     move = 0
-    board = input[0]
+    circle: Deque[int] = deque(map(int, input[0]))
+    length = len(circle)
     for _ in range(100):
-        cur_val = board[current]
+        cur_val = circle[0]
         move += 1
         print(f"-- move {move} --")
         print(
             "cups: "
-            + " ".join([f"({c})" if i == current else c for i, c in enumerate(board)])
+            + " ".join([f"({c})" if i == 0 else str(c) for i, c in enumerate(circle)])
         )
 
-        l, r = (current + 1) % length, (current + 4) % length
-        if r < l:
-            take = board[l:] + board[:r]
-            board = board[r:l]
-        else:
-            take = board[l:r]
-            board = board[:l] + board[r:]
-        if r < current:
-            current -= r
+        circle.rotate(-1)  # move current towards end
+        take = [circle.popleft() for _ in range(3)]
 
-        print(f"pick up: {', '.join([str(i) for i in take])} ({board})")
-        assert len(take) == 3
-        search = "9" if cur_val == "1" else chr(ord(cur_val) - 1)
-        while search not in board:
-            search = "9" if search == "1" else chr(ord(search) - 1)
-        index = board.index(search) + 1
-        board = board[:index] + take + board[index:]
-        if index <= current:
-            current = (current + 3) % length
-        assert board[current] == cur_val
+        print(f"pick up: {', '.join([str(i) for i in take])} ({circle})")
+        search = cur_val
+        while True:
+            seach = (search - 1) or 9
+            if seach not in take:
+                break
+        index = circle.index(search)
+
+        circle.insert(index, take)
         print(f"destination: {search}\n")
-        current = (current + 1) % length
 
-    index = board.index("1")
-    return board[index + 1 :] + board[:index]
+    return circle
