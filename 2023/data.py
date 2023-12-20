@@ -8393,3 +8393,76 @@ hpf{x<977:R,x>1038:R,s>2927:R,A}
 {x=549,m=2736,a=1281,s=1169}
 {x=1616,m=297,a=388,s=1893}""",
 ]
+
+a20 = [
+    """\
+broadcaster -> a, b, c
+%a -> b
+%b -> c
+%c -> inv
+&inv -> a""",
+    #     """\
+    # broadcaster -> a
+    # %a -> inv, con
+    # &inv -> b
+    # %b -> con
+    # &con -> output""",
+    """\
+%pr -> ql
+&jg -> mg
+&mg -> rx
+%mq -> gz, nt
+%db -> ff, dz
+%dx -> zs, bm
+%bd -> nt, lj
+%qj -> hj
+%xs -> zs, dx
+%xd -> nt
+%gb -> fx, th
+&nt -> ds, hj, ht, rh, qj
+%ht -> nt, vp
+&rh -> mg
+%sq -> th, cd
+%tt -> pq
+%dh -> sh
+%rz -> zc
+%cx -> xr, nt
+%zq -> tt, th
+&jm -> mg
+%lj -> nt, cx
+%mp -> ff, bq
+%dz -> ff, gd
+%fz -> bk, th
+%hj -> mq
+broadcaster -> gb, ht, vk, zz
+%zc -> dh
+%pj -> xs
+%bn -> fz
+%mr -> bf
+%mj -> th, sq
+%gg -> pj, zs
+%sh -> mr, zs
+%bf -> zs, gg
+&hf -> mg
+%bm -> zs
+%bk -> zg
+%pq -> th, mj
+%xf -> ff, db
+&th -> bn, gb, tt, hf, bk
+%fx -> th, bn
+&ff -> vd, bq, pr, vk, ql, jm
+%xr -> nt, xd
+%bq -> pr
+%zz -> rz, zs
+%gz -> nt, ds
+&zs -> mr, pj, zz, dh, jg, zc, rz
+%vd -> xf
+%vk -> mp, ff
+%cv -> ff
+%cd -> th
+%zg -> th, zq
+%gd -> ff, cv
+%ql -> lt
+%lt -> ff, vd
+%ds -> bd
+%vp -> nt, qj"""]
