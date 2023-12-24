@@ -1,3 +1,4 @@
+import math
 from itertools import combinations
 
 from skspatial.objects import Line
@@ -6,13 +7,10 @@ Vector = tuple[int, int, int]
 DVector = tuple[Vector, Vector]
 
 
-def mkline(line, max_dims=3) -> Line:
+def mkline(line, max_dims=3, func=float) -> Line:
     "19, 13, 30 @ -2,  1, -2"
     return Line(
-        *[
-            tuple([float(f) for f in e.split(", ")[:max_dims]])
-            for e in line.split(" @ ")
-        ]
+        *[tuple([func(f) for f in e.split(", ")[:max_dims]]) for e in line.split(" @ ")]
     )
 
 
@@ -75,7 +73,7 @@ def f1_debug(input):
     return result
 
 
-def f1(input):
+def f1_disabled(input):
     result = 0
 
     lines = [mkline(line, 2) for line in input]
@@ -92,3 +90,57 @@ def f1(input):
         except ValueError as e:
             pass
     return result
+
+
+def shared_divisors(nrs: list[int], top=0):
+    mx = max(nrs)
+    for i in range(1, top or mx // 2 + 1):
+        if all(n % i == 0 for n in nrs):
+            yield i
+    if all(n == mx for n in nrs):
+        yield mx
+
+
+def f2(input):
+    # We collide at integer positions. Some of the lines are parallel (seen in f1).
+    # Even more of the axis are parallel (x, y or z)
+    # A stone can only intersect parallel-axis snow flakes with a speed
+    # divisible by the distance between these parallel-axis stuff
+    if len(input) < 10:
+        return
+
+    test_range = range(400)  # expanded by searching for solutions
+    lines = [mkline(line, func=int) for line in input]
+    speeds: list[set[int]] = [set() for _ in range(3)]
+    for a, b in combinations(lines, 2):
+        for d in range(3):
+            if a.direction[d] == b.direction[d]:
+                diff = b.point[d] - a.point[d]
+                lspeeds = set(
+                    v
+                    for v in test_range
+                    if v == a.direction[d] or diff % (v - a.direction[d]) == 0
+                )
+                speeds[d] = lspeeds if len(speeds[d]) == 0 else speeds[d] & lspeeds
+
+    print(speeds)
+    assert all(ds is not None and len(ds) == 1 for ds in speeds)
+
+    s = [next(iter(_)) for _ in speeds]
+
+    # now it's a matter of filling out the formula in any of 2 lines perpendicular
+    a, b = lines[4:6]
+    da = (a.direction[1] - s[1]) / (a.direction[0] - s[0])
+    db = (b.direction[1] - s[1]) / (b.direction[0] - s[0])
+
+    x = ((b.point[1] - (db * b.point[0])) - a.point[1] + (da * a.point[0])) // (da - db)
+    y = da * x + (a.point[1] - (da * a.point[0]))
+    t = (x - a.point[0]) // (a.direction[0] - s[0])
+
+    z = a.point[2] + (a.direction[2] - s[2]) * t
+    return int(x + y + z)
+
+    # divs = [list(shared_divisors(list(ds), top=1000)) for ds in distances]
+    # print(divs)
+    # for d in range(3):
+    #     assert all(a % first_div[d] == 0 for a in distances[d])
