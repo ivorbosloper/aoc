@@ -1,20 +1,18 @@
-import re
-from collections import defaultdict
+from io import StringIO
+
+import pandas as pd
 
 
-def parse_line(line):
-    return tuple(int(f) for f in re.split(r'\s+', line))
+def parse(input):
+    return pd.read_csv(StringIO(input), names=["1", "2"], sep=r'\s+')
 
 
 def f1(input):
-    l1 = sorted(a[0] for a in input)
-    l2 = sorted(a[1] for a in input)
-    return sum(abs(e1-e2) for e1, e2 in zip(l1, l2))
+    l1 = input['1'].sort_values()
+    l2 = input['2'].sort_values()
+    return (abs(l1 - l2)).sum()
 
 
 def f2(input):
-    histogram = defaultdict(int)
-    for e in input:
-        histogram[e[1]] += 1
-
-    return sum(a[0] * histogram[a[0]] for a in input)
+    histogram = input['2'].value_counts()
+    return int(sum(input['1'] * input['1'].map(histogram).fillna(0)))
