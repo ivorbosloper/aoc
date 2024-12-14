@@ -50,7 +50,7 @@ def f2(inp):
         # Not very efficient, could jump x if found something
         for y in range(wy - block):
             for x in range(wx - block):
-                found = all((x+dx, y+dy) in s for dy in range(block) for dx in range(block))
+                found = all((x2, y2) in s for x2 in range(x, x+block) for y2 in range(y, y+block))
                 if found:
                     pprint(s)
                     print(y, x, times)
