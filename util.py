@@ -34,3 +34,9 @@ class BaseBoard(Generic[T]):
             if 0 <= x < self.width and 0 <= y < self.height
             else default
         )
+
+    def find(self, e: T, default=None) -> tuple[int, int]:
+        for y, row in enumerate(self.board):
+            for x, c in enumerate(row):
+                if c == e:
+                    return x, y
