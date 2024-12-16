@@ -15,9 +15,8 @@ class Board(BaseBoard):
         q.put((0, (self.start[0], self.start[1], 0)))
         while not q.empty():
             cost, posdir = q.get()
-            if posdir in cheapest:
-                if cheapest[posdir] <= cost:
-                    continue
+            if posdir in cheapest and cheapest[posdir] <= cost:
+                continue
             cheapest[posdir] = cost
             x, y, direction = posdir
             if self.board[y][x] == "E":
@@ -32,7 +31,6 @@ class Board(BaseBoard):
 
             q.put((cost + 1000, (x, y, (direction-1) % 4)))
             q.put((cost + 1000, (x, y, (direction+1) % 4)))
-            # print(direction, list(q.queue))
         raise StopIteration("No exit found")
 
     def reverse_match_cheapest(self, cheapest):
