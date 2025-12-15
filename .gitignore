@@ -1,0 +1,12 @@
+__pycache__
+.idea/
+.vscode
+.pydevproject
+.DS_Store
+.metadata
+.cache
+.pytest_cache
+
+.pyc
+.pyo
+*/data.py
